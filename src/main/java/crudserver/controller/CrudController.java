@@ -3,6 +3,7 @@ package crudserver.controller;
 import crudserver.service.CrudService;
 import crudserver.utils.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,10 @@ public class CrudController {
     public ResponseEntity deleteStudent(@PathVariable int id)
     {
         return crudService.deleteStudent(id);
+    }
+
+    @GetMapping("/healthcheck")
+    public ResponseEntity getHealthcheck(){
+        return new ResponseEntity("Server is up and running !", HttpStatus.OK);
     }
 }
